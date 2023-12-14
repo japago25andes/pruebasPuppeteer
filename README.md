@@ -18,7 +18,7 @@ Ejecutar pruebas
 
 
 
-#COMANDOS VISUAL STUDIO CODE:
+# COMANDOS VISUAL STUDIO CODE:
 
 
 ## Vscode Atajos
