@@ -3,19 +3,37 @@ const puppeteer = require("puppeteer")
 describe("Mi primer test en puppeteer", () => {
 	it("Debe abrir y cerrar el navegador", async () => {
 		const browser = await puppeteer.launch({
-			headless: false,//que se abra o no el navedagor en mi pantalla (ginete sin cabeza). headless: false abre el navegador
-            slowMo: 1000, //camara lenta para que se pueda ver mejor la interacion con el navegador
-            devtools: false, //abre por decir algo el inspeccionar del navegador
-            //defaultViewport:{//cambia el tamaño de la pantalla interna
-            //    width: 2100,
-            //    height: 1080
-            //},
-            //args: ['--window-size=1920,1080']//modifica e tamaño de la pantallas o de la ventana para ser exactos
-            // defaultViewport: null//modifica el ancho interno de la ventana para ajustarse al que se abre
+			headless: false, //que se abra o no el navedagor en mi pantalla (ginete sin cabeza). headless: false abre el navegador
+			defaultViewport: null, //modifica el ancho interno de la ventana para ajustarse al que se abre
 		})
 		const page = await browser.newPage()
-		await page.goto("https://www.google.com")
+		await page.goto("https://www.yahoo.com/")
+		// await page.waitForTimeout(5000)
+        await page.waitForSelector('img')
+        
+        
+        //Instruccion que recarga la pagina
+        await page.reload()
+        await page.waitForSelector('img')
+        
+        //Navegar a otro sitio web
+		await page.goto("https://www.eltiempo.com/")
+        await page.waitForSelector('#header_new > div.nivel-logo > a')
+        
+        //Navegar hacia atras
+        await page.goBack()
+        await page.waitForSelector('img')
+        
+        //Navegar hacia adelante
+        await page.goForward()
+        
+        //Abrir otra pagina
+        const page2 = await browser.newPage()
+        await page2.goto("https://www.caracoltv.com/")
 		await page.waitForTimeout(5000)
-		await browser.close()
-	}, 30000)
+		
+        
+        
+        await browser.close()
+	}, 40000)
 })
