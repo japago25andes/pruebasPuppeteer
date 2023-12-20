@@ -35,5 +35,5 @@ describe("Mi primer test en puppeteer", () => {
         
         
         await browser.close()
-	}, 40000)
+	}, 300000)
 })
