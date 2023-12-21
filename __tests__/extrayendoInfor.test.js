@@ -1,4 +1,7 @@
 const puppeteer = require("puppeteer")
+const { getText, getCount } = require("../lib/helpers")
+
+//-------------------------------------------------------------------------------------------------------------------------------------
 
 describe("Extrayendo informacion", () => {
 	let browser
@@ -14,7 +17,8 @@ describe("Extrayendo informacion", () => {
 		})
 
 		page = await browser.newPage()
-	})
+		await page.goto("https://www.udemy.com/", { waitUntil: "networkidle0" })
+	}, 50000)
 
 	//Pasa despues de cada prueba afterEach
 	//Existe el afterAll = Despues de todos
@@ -22,28 +26,18 @@ describe("Extrayendo informacion", () => {
 		await browser.close()
 	})
 
-	it("Extraer la informacion de un elemento", async () => {
-		await page.goto("https://www.yahoo.com/", { waitUntil: "networkidle0" })
-		//Esperar por el selector para que no tengamos problemas al ejecutar la prueba
-		await page.waitForSelector("#ybarAccountProfile > a")
+	//-------------------------------------------------------------------------------------------------------------------------------------
 
-		const nombreBoton = await page.$eval("#ybarAccountProfile > a", (button) => button.textContent)
+	it("Extraer la informacion de un elemento", async () => {
+		const nombreBoton = await getText(
+			page,
+			'#es > div.ud-main-content-wrapper > div.ud-app-loader.ud-component--header-v6--header.ud-header.ud-app-loaded > div.ud-header.ud-text-sm.desktop-header-module--header--3nb6v.desktop-header-module--flex-middle--1e7c8 > div:nth-child(9) > a > span'
+		)
 
 		console.log(nombreBoton)
-
-		const [button] = await page.$x('//*[@id="ybarAccountProfile"]/a')
-		const propiedad = await button.getProperty("textContent")
-		const texto = await propiedad.jsonValue()
-
-		console.log(texto)
-
-		//segunda forma
-		const texto2 = await page.evaluate((name) => name.textContent, button)
-		console.log(texto2)
 	}, 400000)
 
 	it("Extraer el titulo de la pagina y la url", async () => {
-		await page.goto("https://www.yahoo.com/", { waitUntil: "networkidle0" })
 		//Extraer el nombre y la url de la pagina
 		const titulo = await page.title()
 		const url = await page.url()
@@ -53,10 +47,8 @@ describe("Extrayendo informacion", () => {
 	}, 400000)
 
 	it("Extraer el titulo de la pagina y la url", async () => {
-		await page.goto("https://www.yahoo.com/", { waitUntil: "networkidle0" })
-
 		//Contar el numero de elementos en una pagina
-		const imagenes = await page.$$eval("img", (imagenes) => imagenes.length)
+		const imagenes = await getCount(page, 'div')
 		console.log(imagenes)
 	}, 400000)
 })
