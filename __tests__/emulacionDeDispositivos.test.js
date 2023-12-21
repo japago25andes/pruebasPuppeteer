@@ -13,7 +13,11 @@ describe("Emulando dispositivos", () => {
 			//slowMode: 500, //Especifica la velocidad a la que se deben realizar las cosas dentro de la prueba
 		})
 
-		page = await browser.newPage()
+		//Pagina de browser normal(sin que sea de modo incognito)
+		//page = await browser.newPage()
+
+		const context = await browser.createIncognitoBrowserContext()
+		page = await context.newPage()
 
 		await page.goto("https://www.yahoo.com/", { waitUntil: "networkidle0" })
 	}, 100000)
