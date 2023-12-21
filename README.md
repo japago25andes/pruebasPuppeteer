@@ -10,7 +10,7 @@ Ejecutar pruebas
 
 * npm run <nombreScrib> -> este nombre del escrib esta en package.json
 * npm run test -> ejemplo
-
+* Se puede instalar en visual estudio code la aplicacion Jest para ejecutar las pruebas mas
 
 
 

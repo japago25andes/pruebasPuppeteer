@@ -1,6 +1,8 @@
 const puppeteer = require("puppeteer")
 
 describe("Tipos de espera", () => {
+
+	
 	it("Mostrar todos los diferentes tios de espera", async () => {
 		const browser = await puppeteer.launch({
 			headless: false, //que se abra o no el navedagor en mi pantalla (ginete sin cabeza). headless: false abre el navegador
@@ -37,7 +39,8 @@ describe("Tipos de espera", () => {
         const observaResize = page.waitForFunction('window.innerWidth < 100')
         await page.setViewport({width:50, height:50})
         await observaResize  
-        
+        await page.setViewport({width:500, height:500})
+
         //Se cierra la ventana emergente y seguidose valida con negacion que ya no este presente
         await page.click('#closeSmallModal')
 		await page.waitForFunction(() => !document.querySelector('#example-modal-sizes-title-sm'))
