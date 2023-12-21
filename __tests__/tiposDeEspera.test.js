@@ -11,6 +11,8 @@ describe("Tipos de espera", () => {
 
 		})
 		const page = await browser.newPage()
+		//page.setDefaultTimeout(5000)//Tiempo de espera por defecto
+		//page.setDefaultNavigationTimeout(5000)//Tiempo de espera por defecto entre paginas de navegacion
         await page.goto("https://www.yahoo.com/", {waitUntil: 'networkidle0'})
 
 		//Espera explicita
@@ -49,5 +51,5 @@ describe("Tipos de espera", () => {
 
 
 		await browser.close()
-	}, 40000)
+	}, 400000)// este tiempod e espera es mucho mejor por que se configura para toda la prueba
 })
