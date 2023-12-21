@@ -1,7 +1,8 @@
 const puppeteer = require("puppeteer")
 
 describe("Tipos de espera", () => {
-
+	//Esta es otra foma de configurar el tiempo de espera para la prueba
+	//jest.setTimeout(10000)
 	
 	it("Mostrar todos los diferentes tios de espera", async () => {
 		const browser = await puppeteer.launch({
