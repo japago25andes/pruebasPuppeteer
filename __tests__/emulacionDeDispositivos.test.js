@@ -16,6 +16,7 @@ describe("Emulando dispositivos", () => {
 		//Pagina de browser normal(sin que sea de modo incognito)
 		//page = await browser.newPage()
 
+		//crean un context de pagina ingognita y la utiliza
 		const context = await browser.createIncognitoBrowserContext()
 		page = await context.newPage()
 
