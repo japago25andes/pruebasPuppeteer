@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --forceExit"
+    "test": "jest --forceExit",
+    "test-emulacion-de-dispositivos": "jest --forceExit --detectOpenHandles __tests__/emulacionDeDispositivos.test.js",
+    "visual-test": "jest --updateSnapshot --forceExit --detectOpenHandles __tests__/visual.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "jest": "^29.7.0",
+    "jest-image": "^1.0.11",
+    "jest-image-snapshot": "^6.4.0",
     "puppeteer": "^21.6.0"
   },
   "devDependencies": {

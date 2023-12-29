@@ -12,9 +12,10 @@ Ejecutar pruebas
 * npm run test -> ejemplo
 * Se puede instalar en visual estudio code la aplicacion Jest para ejecutar las pruebas mas
 
+Intalar librerias de manejo de imagenes
 
-
-
+* npm i jest-image
+* npm i jest-image-snapshot
 
 
 
