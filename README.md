@@ -17,7 +17,15 @@ Intalar librerias de manejo de imagenes
 * npm i jest-image
 * npm i jest-image-snapshot
 
+Preparacion ambiente de pruebas
 
+* npm install puppeteer
+* npm install puppeteer --save-dev
+* npm i puppeteer jest
+* npm install --save-dev jest
+* npx jest => para ejecutar las pruebas
+
+imoortante tener una carpeta dentro del proyecto "__test__" y las pruebas con la extención "*.test.js"
 
 # COMANDOS VISUAL STUDIO CODE:
 
